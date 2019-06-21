@@ -1,0 +1,2 @@
+# CoreRN
+Core React Native
