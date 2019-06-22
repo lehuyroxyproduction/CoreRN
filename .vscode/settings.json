@@ -1,0 +1,21 @@
+{
+    "files.autoSave": "afterDelay",
+    "prettier.jsxSingleQuote": true,
+    "editor.mouseWheelZoom": true,
+    "eslint.autoFixOnSave": true,
+    "git.autorefresh": false,
+    "esQuotes.defaultQuote": "'",
+    "eslint.alwaysShowStatus": true,
+    "prettier.endOfLine": "lf",
+    "prettier.eslintIntegration": true,
+    "prettier.jsxBracketSameLine": true,
+    "prettier.parser": "flow",
+    "prettier.semi": false,
+    "prettier.singleQuote": true,
+    "prettier.stylelintIntegration": true,
+    "eslint.packageManager": "yarn",
+    "editor.tabCompletion": "on",
+    "editor.formatOnSave": true,
+    "workbench.colorTheme": "Monokai",
+    "cSpell.allowCompoundWords": true
+}

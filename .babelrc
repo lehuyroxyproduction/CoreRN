@@ -1,3 +1,8 @@
 {
-  "presets": ["react-native"]
+    "presets": ["module:metro-react-native-babel-preset"],
+    "plugins": [
+        ["module-resolver", { "root": "./src", "config": "./src/config", "App": "./src/App", "constants": "./src/constants" }]
+    ],
+    "sourceMaps": true
 }
+
