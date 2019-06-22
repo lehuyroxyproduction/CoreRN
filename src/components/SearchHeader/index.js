@@ -6,7 +6,7 @@ import { getStatusBarHeight } from 'react-native-status-bar-height'
 import { View, Text, TextInput } from 'components/uielements'
 import { Icons } from 'images'
 import {Colors, Metrics} from 'themes'
-import { HEADER_HEIGHT, wp } from 'constants'
+import { HEADER_HEIGHT, wp } from 'Constants/constant'
 
 type Props = {
   title?: String,

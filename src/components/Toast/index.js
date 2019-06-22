@@ -2,7 +2,7 @@ import React from 'react'
 import { connect } from 'react-redux'
 import { Animated, Easing, StyleSheet } from 'react-native'
 
-import { actions, selectors } from 'reducers/app'
+import { actions, selectors } from 'redux/reducers/app'
 
 import { Metrics } from 'themes'
 import {Text} from 'components/uielements'

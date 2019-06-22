@@ -3,7 +3,7 @@
 import { AsyncStorage, Platform } from 'react-native'
 import apisauce from 'apisauce'
 import { appConfig } from 'config'
-import { jobSelectors } from 'reducers/index'
+import { jobSelectors } from 'redux/reducers/index'
 import store from 'store'
 import { isNilOrEmpty } from 'constants'
 

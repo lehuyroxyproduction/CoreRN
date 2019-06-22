@@ -1,7 +1,7 @@
 import React from 'react'
 import { ActivityIndicator, StyleSheet } from 'react-native'
 import { Colors } from 'themes'
-import { HEADER_HEIGHT } from 'constants'
+import { HEADER_HEIGHT } from 'Constants/constant'
 import { View } from 'components/uielements'
 import PropTypes from 'prop-types'
 export default class LoadingView extends React.PureComponent<LoadingViewProps> {

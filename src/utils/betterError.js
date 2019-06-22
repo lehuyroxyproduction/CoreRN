@@ -1,6 +1,6 @@
 import store from 'store'
 
-import { actions } from 'reducers/app'
+import { actions } from 'redux/reducers/app'
 
 export const betterError = (title: String, error: String) => {
   const display = `${title} ${error}`

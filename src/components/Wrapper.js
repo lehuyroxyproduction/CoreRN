@@ -1,14 +1,15 @@
 import React from 'react'
-import { Alert, BackHandler, Keyboard } from 'react-native'
+import { BackHandler, Keyboard, DeviceEventEmitter, Alert } from 'react-native'
 import { Navigation } from 'react-native-navigation'
 import store from 'store'
-import { appActions, appSelectors } from 'reducers'
+import { appActions, appSelectors } from 'redux/reducers'
 import { firebase } from 'services'
+import I18n from 'react-native-i18n'
 
 type Props = {}
 
 export default Screen => {
-  return class WrappedScreen extends React.Component<Props> {
+  class WrappedScreen extends React.Component<Props> {
     constructor(props) {
       super(props)
       Navigation.events().bindComponent(this)
@@ -21,6 +22,16 @@ export default Screen => {
       BackHandler.addEventListener('hardwareBackPress', this.handleBackPress)
       // DeviceEventEmitter.
       // BackAndroid.addEventListener('backPress', this.handleBackPress)
+      Navigation.setDefaultOptions({
+        animations: {
+          push: {
+            waitForRender: true
+          },
+          showModal: {
+            waitForRender: true
+          }
+        }
+      })
     }
 
     componentWillUnmount() {
@@ -42,8 +53,8 @@ export default Screen => {
     // }
     showAlertToExit = () => {
       Alert.alert(
-        'Thoát ứng dụng ?',
-        'Bạn có chắc chắn muốn thoát?',
+        I18n.t('titleMessageExit'),
+        I18n.t('contentMessageExit'),
         [{ text: 'OK', onPress: () => BackHandler.exitApp() }, { text: 'CANCEL', onPress: () => {} }],
         { cancelable: false }
       )
@@ -54,25 +65,23 @@ export default Screen => {
         this.showAlertToExit()
       } else {
         this.pop()
-        this.hideDrawer()
-        this.dismissModal()
       }
       return true
     }
     static options = passProps => {
       const options = Screen.options ? Screen.options(passProps) : {}
 
-      return {
+      const mergeOptions = {
         ...options
       }
 
-      // return mergeOptions
+      return mergeOptions
     }
 
     bindNavigationEvents = context => {
       Navigation.events().bindComponent(context)
     }
-    push = ({ componentId = this.props.componentId, screen, passProps, options }): void => {
+    push = ({ componentId: string = this.props.componentId, screen, passProps, options }): void => {
       const currentScreen = appSelectors.getCurrentScreen(store.getState())
 
       if (currentScreen !== componentId) {
@@ -90,11 +99,12 @@ export default Screen => {
       }
     }
 
-    pop = () => {
+    pop = (callback = null) => {
       Keyboard.dismiss()
       Navigation.pop(this.props.componentId)
       global.componentId = this.props.previousComponentId
       store.dispatch(appActions.setCurrentScreen(null))
+      callback && callback()
     }
     popToRoot = () => {
       Keyboard.dismiss()
@@ -105,7 +115,7 @@ export default Screen => {
 
     showModal = ({ screen, passProps, options }) => {
       const currentScreenId = appSelectors.getCurrentScreen(store.getState())
-      console.log('Show Modal', currentScreenId, screen)
+
       if (currentScreenId !== screen) {
         Navigation.showModal({
           stack: {
@@ -121,7 +131,13 @@ export default Screen => {
                   }
                 }
               }
-            ]
+            ],
+            options: {
+              topBar: {
+                visible: false,
+                drawBehind: true
+              }
+            }
           }
         })
 
@@ -133,14 +149,13 @@ export default Screen => {
 
       global.componentId = this.props.previousComponentId
 
-      store.dispatch(appActions.setCurrentScreen(this.props.previousComponentId))
-      // store.dispatch(appActions.setCurrentScreen(null))
+      store.dispatch(appActions.setCurrentScreen(null))
     }
 
     showDrawer = () => {
-      Navigation.mergeOptions('sideMenu', {
+      Navigation.mergeOptions(this.props.componentId, {
         sideMenu: {
-          right: {
+          left: {
             visible: true,
             enabled: true
           }
@@ -149,10 +164,9 @@ export default Screen => {
     }
 
     hideDrawer = () => {
-      Navigation.mergeOptions('sideMenu', {
+      Navigation.mergeOptions(this.props.componentId, {
         sideMenu: {
-          right: {
-            enabled: false,
+          left: {
             visible: false
           }
         }
@@ -188,4 +202,6 @@ export default Screen => {
       )
     }
   }
+
+  return WrappedScreen
 }

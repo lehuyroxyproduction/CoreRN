@@ -6,7 +6,7 @@ import { Alert, BackHandler } from 'react-native'
 import { Toast, Button } from 'components'
 import { View, Text } from 'components/uielements'
 
-import { actions, selectors } from 'reducers/app'
+import { actions, selectors } from 'redux/reducers/app'
 
 import { modals } from 'screens'
 import { Styles } from 'themes'
