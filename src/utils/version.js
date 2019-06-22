@@ -2,7 +2,7 @@ import { AsyncStorage } from 'react-native'
 import VersionNumber from 'react-native-version-number'
 
 import store from 'store'
-import { actions } from 'redux/reducers/app'
+import { actions } from 'redux/reducers/reducerApp'
 
 export const getAppVersion = () => {
   // console.log('version_name', VersionNumber.appVersion)

@@ -4,7 +4,7 @@ import timer from 'react-native-timer-mixin'
 import { betterError } from './betterError'
 import { client } from 'services'
 
-import { selectors } from 'redux/reducers/app'
+import { selectors } from 'redux/reducers/reducerApp'
 import { actions as authActions } from 'redux/reducers/auth'
 import { selectors as userSelectors } from 'redux/reducers/user'
 

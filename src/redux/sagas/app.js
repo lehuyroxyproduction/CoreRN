@@ -1,6 +1,6 @@
 import { call, put, takeLatest, delay } from 'redux-saga/effects'
 
-import { types, actions } from 'redux/reducers/app'
+import { types, actions } from 'redux/reducers/reducerApp'
 
 import { fetch } from 'utils/api'
 

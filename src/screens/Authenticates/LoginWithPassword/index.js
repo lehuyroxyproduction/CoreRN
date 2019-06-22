@@ -11,7 +11,7 @@ import {
   selectors as authSelectors
 } from 'redux/reducers/auth'
 
-import { actions as appActions, selectors as appSelectors } from 'redux/reducers/app'
+import { actions as appActions, selectors as appSelectors } from 'redux/reducers/reducerApp'
 
 import { Icons, Images } from 'images'
 import { Colors, Styles } from 'themes'

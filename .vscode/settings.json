@@ -16,6 +16,6 @@
     "eslint.packageManager": "yarn",
     "editor.tabCompletion": "on",
     "editor.formatOnSave": true,
-    "workbench.colorTheme": "Monokai",
+    "workbench.colorTheme": "Dark+ Material",
     "cSpell.allowCompoundWords": true
 }

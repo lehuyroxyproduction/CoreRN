@@ -9,7 +9,7 @@ import ImagePicker from 'react-native-image-crop-picker'
 import { Container, ActionSheet } from 'components'
 import { View, Text, TextInput, Touchable } from 'components/uielements'
 
-import { selectors } from 'redux/reducers/app'
+import { selectors } from 'redux/reducers/reducerApp'
 import { actions } from 'redux/reducers/user'
 
 import { Icons, Images } from 'images'

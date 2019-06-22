@@ -9,7 +9,7 @@ import { View, Text, TextInput, Touchable } from 'components/uielements'
 
 import DropDown from 'components/DropDown'
 
-import { selectors } from 'redux/reducers/app'
+import { selectors } from 'redux/reducers/reducerApp'
 import { actions } from 'redux/reducers/user'
 
 import { Icons } from 'images'

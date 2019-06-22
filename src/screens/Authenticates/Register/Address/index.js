@@ -11,7 +11,7 @@ import { Icons } from 'images'
 import { Colors, Metrics, Styles } from 'themes'
 
 import { actions } from 'redux/reducers/user'
-import { selectors as appSelectors } from 'redux/reducers/app'
+import { selectors as appSelectors } from 'redux/reducers/reducerApp'
 
 class Address extends React.Component {
   state = { value: '', isUnvalid: false }

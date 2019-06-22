@@ -1,7 +1,7 @@
 import { Platform, Keyboard } from 'react-native'
 
 import store from 'store'
-import { actions } from 'redux/reducers/app'
+import { actions } from 'redux/reducers/reducerApp'
 
 const { showEvent, hideEvent } = Platform.select({
   ios: { showEvent: 'keyboardWillShow', hideEvent: 'keyboardWillHide' },

@@ -6,7 +6,7 @@ import { Alert, Image, TouchableOpacity } from 'react-native'
 import { Container } from 'components'
 import { View, Text, TextInput, Touchable } from 'components/uielements'
 
-import { selectors as appSelectors } from 'redux/reducers/app'
+import { selectors as appSelectors } from 'redux/reducers/reducerApp'
 import { actions } from 'redux/reducers/user'
 
 import { Icons, Images } from 'images'
