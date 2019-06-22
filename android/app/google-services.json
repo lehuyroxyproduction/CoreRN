@@ -1,0 +1,79 @@
+{
+  "project_info": {
+    "project_number": "1044900339794",
+    "firebase_url": "https://liv3ly-ac4e8.firebaseio.com",
+    "project_id": "liv3ly-ac4e8",
+    "storage_bucket": "liv3ly-ac4e8.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:1044900339794:android:f6868e9b8a05356b",
+        "android_client_info": {
+          "package_name": "sg.pangu.run"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "1044900339794-l4vk6icvlsi1sprjblt8cknt88h17msp.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "sg.pangu.run",
+            "certificate_hash": "4bf1e3c4df101d64294e99bf87e6e6293f4f328e"
+          }
+        },
+        {
+          "client_id": "1044900339794-nu0svq7cshm3e7ar7ltsobnb9ls4j9pe.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "sg.pangu.run",
+            "certificate_hash": "f288befffa94fdbced2cf42401722935405458ca"
+          }
+        },
+        {
+          "client_id": "1044900339794-r3q3f8ol9iiacbff0fsh886ohscsa77h.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "sg.pangu.run",
+            "certificate_hash": "0811db84fe0553fedc36521307d6556a2e039afd"
+          }
+        },
+        {
+          "client_id": "1044900339794-9fbhm3k14m1obqvmsnh9emmpmg2sriov.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "sg.pangu.run",
+            "certificate_hash": "edd381432b1205fb217cfcf343380c4a575ddef9"
+          }
+        },
+        {
+          "client_id": "1044900339794-7fl4pk40nchcgsoikdo9jf0a8bi87d0n.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDHQdxblNZuNovkCquv7OeIK7oDlvemyP8"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "1044900339794-7fl4pk40nchcgsoikdo9jf0a8bi87d0n.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "1044900339794-t4kjicl8b33vk592is0nr5gldh1jc2e3.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "sg.pangu.run"
+              }
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

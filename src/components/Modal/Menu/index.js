@@ -3,7 +3,7 @@ import {Text, View, TouchableOpacity, Image} from 'react-native'
 import {styles} from './styles'
 import {Icons, Logos} from 'images'
 import I18n from 'react-native-i18n'
-import {wp, hp, isAndroid} from 'Constants/constant'
+import {wp, hp, isAndroid} from 'constant'
 import {Themes} from 'themes'
 
 export interface MenuProps {

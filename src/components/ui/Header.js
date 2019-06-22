@@ -1,7 +1,7 @@
 import React from 'react'
 
 import { LayoutProps } from 'themes/types'
-import { hp, wp } from 'Constants/constant'
+import { hp, wp } from 'constant'
 import { Metrics } from 'themes'
 import { Text, View } from 'components/ui'
 import { Image, TextProps, TouchableOpacity } from 'react-native'

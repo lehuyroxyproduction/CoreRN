@@ -4,7 +4,7 @@ import RNFirebase from 'react-native-firebase'
 
 const firebase = Platform.select({
   ios: RNFirebase,
-  android: RNFirebase
+  android: RNFirebase,
 })
 
 export default firebase

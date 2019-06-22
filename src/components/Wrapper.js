@@ -2,7 +2,7 @@ import React from 'react'
 import { BackHandler, Keyboard, DeviceEventEmitter, Alert } from 'react-native'
 import { Navigation } from 'react-native-navigation'
 import store from 'store'
-import { appActions, appSelectors } from 'redux/reducers'
+import { appActions, appSelectors } from 'reducers'
 import { firebase } from 'services'
 import I18n from 'react-native-i18n'
 

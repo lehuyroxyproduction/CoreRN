@@ -6,7 +6,7 @@ import {
   TouchableOpacity,
   TouchableNativeFeedback
 } from 'react-native'
-import { isAndroid } from 'Constants/constant'
+import { isAndroid } from 'constant'
 import { View } from 'components/ui'
 
 const Android21Plus = isAndroid && Platform.Version >= 21

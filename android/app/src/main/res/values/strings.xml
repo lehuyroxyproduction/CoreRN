@@ -1,7 +1,5 @@
 <resources>
-    <string name="app_name">ezjob</string>
-    <string name="fb_app_id">447695812318068</string>
-    <string name="ak_client_token">a46498ef673b4f0a36dd3972a968eab2</string>
-    <string name="FACEBOOK_APP_ID">2232778913712562</string>
-    <string name="ACCOUNT_KIT_CLIENT_TOKEN">8050fd5d2931a3c176411f1e3d1da7ec</string>
+    <string name="app_name">LIV3LY</string>
+    <string name="facebook_app_id">838956959774113</string>
+    <string name="fb_login_protocol_scheme">fb838956959774113</string>
 </resources>

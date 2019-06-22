@@ -2,7 +2,7 @@ import React, { Component } from 'react'
 import { ActivityIndicator, StyleSheet } from 'react-native'
 import FastImage from 'react-native-fast-image'
 import { Colors, Metrics } from 'themes'
-import { hp } from 'Constants/constant'
+import { hp } from 'constant'
 import { View } from 'components/ui'
 
 // export const ImageContent = (props: Props) => {

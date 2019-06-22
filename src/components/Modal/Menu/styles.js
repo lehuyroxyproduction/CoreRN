@@ -1,5 +1,5 @@
 import { StyleSheet, Dimensions } from 'react-native'
-import { wp, hp, isAndroid } from 'Constants/constant'
+import { wp, hp, isAndroid } from 'constant'
 
 import { Themes } from 'themes'
 

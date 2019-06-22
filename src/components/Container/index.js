@@ -12,7 +12,7 @@ import { LayoutProps } from 'themes/types'
 import FastImage from 'react-native-fast-image'
 import { Colors, Metrics } from 'themes'
 import { hasBottomBar, hasNotch, statusBarStyle } from 'utils'
-import { hp } from 'Constants/constant'
+import { hp } from 'constant'
 import { View } from 'components/ui'
 
 type Props = {

@@ -2,9 +2,10 @@ import store from 'store'
 
 import { NetInfo } from 'react-native'
 
-import { actions } from 'redux/reducers/reducerApp'
+import { actions } from 'reducers/app'
 
-const onChange = (isConnected: Boolean) => store.dispatch(actions.updateNetwork(isConnected))
+const onChange = (isConnected: Boolean) =>
+  store.dispatch(actions.updateNetwork(isConnected))
 
 const listenNetInfo = () => {
   NetInfo.isConnected.addEventListener('connectionChange', onChange)

@@ -1,17 +1,50 @@
-export const reducerFactory = ({ onStart, onSuccess, onError, onCancel }) => (
-  state,
-  action
+type Action = {
+  type?: String
+}
+
+type Func = {
+  isStart: Action,
+  isSuccess?: Action,
+  isError?: Action
+}
+
+const initialState = {
+  isLoading: false,
+  isSuccess: false,
+  isError: false,
+  error: null
+}
+
+export const reducerFactory = ({ onStart, onSuccess, onError }: Func) => (
+  state = initialState,
+  { type, payload }
 ) => {
-  switch (action.type) {
+  switch (type) {
     case onStart:
-      return { ...state, isLoading: true, status: '' }
+      return {
+        isLoading: true,
+        isSuccess: false,
+        isError: false,
+        error: null
+      }
+
     case onSuccess:
-      return { ...state, isLoading: false, status: 'success' }
+      return {
+        isLoading: false,
+        isSuccess: true,
+        isError: false,
+        error: null
+      }
+
     case onError:
-      return { ...state, isLoading: false, status: 'error' }
-    case onCancel:
-      return { ...state, isLoading: false, status: '' }
+      return {
+        isLoading: false,
+        isSuccess: false,
+        isError: true,
+        error: payload
+      }
+
     default:
-      return { ...state }
+      return state
   }
 }
