@@ -1,5 +1,3 @@
 <resources>
-    <string name="app_name">LIV3LY</string>
-    <string name="facebook_app_id">838956959774113</string>
-    <string name="fb_login_protocol_scheme">fb838956959774113</string>
+    <string name="app_name">GoPOSVer</string>
 </resources>

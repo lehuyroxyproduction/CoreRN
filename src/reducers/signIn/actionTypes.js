@@ -1,7 +1,0 @@
-export const SET_LOADING = 'sign-in/set-loading'
-export const SET_SIGN_IN_TYPE = 'sign-in/set-sign-in-type'
-export const REQUEST_GOOGLE_SIGN_IN = 'sign-in/request-google-sign-in'
-export const REQUEST_FACEBOOK_SIGN_IN = 'sign-in/request-facebook-sign-in'
-export const REQUEST_ALTERNATE_FACEBOOK_SIGN_IN = 'sign-in/request-alternate-facebook-sign-in'
-export const REQUEST_SIGN_OUT = 'sign-in/request-sign-out'
-export const SIGN_OUT_SUCCESS = 'sign-in/sign-out-success'
