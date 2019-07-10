@@ -1,52 +1,53 @@
-import { Platform, Dimensions, PixelRatio, StyleSheet } from 'react-native';
-import { isIphoneX } from 'react-native-iphone-x-helper';
+import { Platform, Dimensions, PixelRatio, StyleSheet } from 'react-native'
+import { isIphoneX } from 'react-native-iphone-x-helper'
+import normalize from '../containers/libs/normalizeSize'
 
-export const Devices = {
-    displayScale: Platform.OS === 'ios' ? (!isIphoneX() ? (Dimensions.get('window').height / 667) : 1) : (Dimensions.get('window').height * PixelRatio.get()) > 1920 ? 0.9 : (Dimensions.get('window').height / 667),
-    wp: Dimensions.get('window').width,
-    hp: Dimensions.get('window').height
+const screenHeight = Dimensions.get('window').height
+const screenWidth = Dimensions.get('window').width
+
+const Devices = {
+    displayScale: Platform.OS === 'ios' ? (!isIphoneX() ? (Dimensions.get('window').height / 667) : 1) : (Dimensions.get('window').height * PixelRatio.get()) > 1920 ? 0.9 : (Dimensions.get('window').height / 667)
+}
+const isAndroid = Platform.OS === 'android'
+const DisplayScale = Devices.displayScale
+
+const wp = widthPercent => {
+    //check value is string or number
+  const elemWidth = typeof widthPercent === 'number' ? widthPercent : parseFloat(widthPercent)
+  return PixelRatio.roundToNearestPixel((screenWidth * elemWidth) / 100)
+}
+const hp = heightPercent => {
+    //check value is string or number
+  const elemHeight = typeof heightPercent === 'number' ? heightPercent : parseFloat(heightPercent)
+  return PixelRatio.roundToNearestPixel((screenHeight * elemHeight) / 100)
 }
 
-export const DisplayScale = Devices.displayScale;
-
-export const Colors = {
-    main:'#e0e0e0',
-    mainLine:'#B60969',
-    mainWhite:'#ffffff',
-    txtWhite:'#FCFDFE',
-    txtBlack:'#000',
-    txtDescript:'#9B9B9B',
-    grayButton:'#4F5B73',
-    buttonFooter:'#EEEEEE',
-    lineFooter:'#979797',
-    lineTag:'#E9E8E8',
-    bgButton:'#D9D4D4',
-    payButton:'#bdbdbd',
-    progressBar:'#65B150',
-    borderQRSuccess:'#76ff03',
-    bgTitle:'#F4F6FE',
-    btnAmount:'#4A4A4A'
-
-}
-
-export const Fonts = {
-    RobotoBack:'../assets/fonts/Roboto-Black.ttf',
-    RobotoBlackItalic:'../assets/fonts/Roboto-BlackItalic.ttf',
-    RobotoBold: '../assets/fonts/Roboto-Bold.ttf',
-    RobotoBoldItalic : '../assets/fonts/Roboto-BoldItalic.ttf',
-    RobotoItalic:'../assets/fonts/Roboto-Italic.ttf',
-    RobotoLight:'../assets/fonts/Roboto-Light.ttf',
-    RobotoLightItalic:'../assets/fonts/Roboto-LightItalic.ttf',
-    RobotoMedium:'../assets/fonts/Roboto-Medium.ttf',
-    RobotoMediumItalic:'../assets/fonts/Roboto-MediumItalic.ttf',
-    RobotoRegular : '../assets/fonts/Roboto-Regular.ttf',
-    RobotoThin : '../assets/fonts/Roboto-Thin.ttf',
-    RobotoThinItalic : '../assets/fonts/Roboto-ThinItalic.ttf'
-}
-
-export const StylesGlobal = StyleSheet.create({
+const Colors = {
+    primary: '#B3D669',
+    secondary: '#3A3A3C',
+    tertiary: '#BE1A29',
+    white: '#ffffff',
+    black: '#000',
+    electricBlue: '#rgba(0, 74, 255,1)',
+    splashScreen: '#0043E7',
+    blackBg: '#rgb(35,35,35)',
+    brownGrey: '#rgb(144,144,144)',
+    brownishGrey: '#rgb(102,102,102)',
+    vermillion: '#rgb(251,22,22)',
+    blackThree: '#rgb(43,43,43)',
+    yellowBrow: '#rgb(255,160,0)',
+    cyanWhite: '#rgb(53,197,170) ',
+    blackOverlay0_7: 'rgba(0, 0, 0, 0.7)',
+    lightGrey: 'rgb(208,208,208)',
+    grey241: '#rgb(241,241,241)',
+    grey235: '#rgb(235,235,235)',
+    jadeGreen: '#rgb(53,197,170)',
+    orange: '#rgb(255,160,0)',
+    blackBgInfo: 'rgba(40, 40, 40, 0.9)',
+    headerOverplay: 'rgba(0, 0, 0, 0.1)'
+  }
+const StylesGlobal = StyleSheet.create({
     AppClass:{
-        fontFamily:'AvenirNextCyr',
         flex:1
     },
     header: {
@@ -108,26 +109,59 @@ export const StylesGlobal = StyleSheet.create({
 
 });
 
-export const DefaultProps = {
-    toastDefaultCloseDelay: 200,
-    loadingIconSize: 50 * Devices.displayScale,
-    defaultPadding: 10 * Devices.displayScale,
-    defaultButtonWidth: 196 * Devices.displayScale,
-    defaultButtonRadius: 17 * Devices.displayScale,
-    segmentWidth: 80 * Devices.displayScale,
-    segmentHeight: 32 * Devices.displayScale,
-    iconHeaderUserProfileWidth: 32 * Devices.displayScale,
-    iconHeaderNotificationWidth: 32 * Devices.displayScale,
-    iconHeaderStarWidth: 25 * Devices.displayScale,
-    iconLightContainerSize: 15 * Devices.displayScale,
-    iconLightSize: 12 * Devices.displayScale,
-    tabNavigatorDefaultHeight: 60 * Devices.displayScale,
+
+const BannerImage={
+  
+}
+const AppImages = {
+   
+}
+const Icons = {
+
 }
 
-export const BannerImage={
+const Fonts = {
+    size: {
+      tiny: normalize(10),
+      xsmaller: normalize(11),
+      smaller: normalize(12),
+      small: normalize(14),
+      medium: normalize(16),
+      large: normalize(18),
+      larger: normalize(20),
+      xlarger: normalize(24),
+      xlarge: normalize(30),
+      xxlarge: normalize(40),
+      xxlarger: normalize(48),
+      xxxlarge: normalize(64)
+    },
+    face: {
+      regular: 'AvenirNext-Regular',
+      medium: 'AvenirNext-Medium',
+      demiBold: 'AvenirNext-DemiBold',
+      bold: 'AvenirNext-Bold',
+      AncuuBold: 'Ancuu-Bold',
+      AncuuNormal: 'Ancuu-Normal'
+    }
+  }
   
+
+const STATUS_BAR_STYLE = {
+  DARK: 'dark-content',
+  LIGHT: 'light-content'
 }
-export const AppImages = {
-   
-};
-  
+export { 
+    screenHeight , 
+    screenWidth,
+    Fonts,
+    BannerImage,
+    AppImages,
+    Icons,
+    wp,
+    hp,
+    StylesGlobal,
+    DisplayScale,
+    Colors,
+    isAndroid,
+    STATUS_BAR_STYLE
+}

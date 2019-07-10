@@ -2,24 +2,21 @@ import React, { Component } from 'react'
 import {connect} from 'react-redux'
 import { bindActionCreators } from 'redux'
 import { TouchableOpacity,
-    Keyboard,
-    TouchableWithoutFeedback,
     Text,
-    Dimensions,
-    Alert, 
-    View,Image,
+    Image,
     ScrollView,
     FlatList,
     StatusBar,
-    Button,
+    // Button,
     TextInput,
     RefreshControl
-} from 'react-native';
+} from 'react-native'
+import Slider from 'react-native-slider'
 import {styles} from './styles'
 import I18n from'react-native-i18n'
-import {Devices} from '../../../constants/constants'
+import {Devices, wp, screenHeight, screenWidth,Colors, isAndroid} from '../../../constants/constants'
 import {getApiListUserStart} from '../../../redux/actions/actionListUser'
-import FastImage from 'react-native-fast-image';
+import {View, Container, Loader,Button} from '../../../containers'
 
 class ListUser extends Component {
 
@@ -34,50 +31,76 @@ class ListUser extends Component {
         this.state={
             value:'',
             listuser:[],
-            refreshing:true
+            refreshing:true,
+            isVisible:false,
+            ind:''
         }
     }
 
 // #region life circle
 componentDidMount(){
-    this.props.getApiListUserStart()
+  this.props.getApiListUserStart()
 }
 
 componentWillReceiveProps(nextProps){
-    console.log(nextProps.listuser.players)
-   this.setState({
-       listuser:nextProps.listuser.players,
-       refreshing:false
+    // console.log(nextProps.listuser.players)
+    if(nextProps.listuser){
+    this.setState({
+      listuser:nextProps.listuser.players,
+      refreshing:false
     })
+    }else{
+      console.log("null")
+    }
 }
 // #endregion life circle
 
     render(){
-       const {value ,listuser,refreshing}=this.state
-       console.log(listuser)
+      const {value ,listuser,refreshing}=this.state
+      console.log(screenHeight)
     return(
-       <View style={{flex:1}} >
-           <Image
+      <Container statusBarBackgroundColor={Colors.cyanWhite} >
+            <View
+            justifyCenter
+            centerItems
+            >
+              <Image
                 source={require('../../../assets/images/Monster_Energy_logo_logotype_emblem.png')}
                 style={{
-                    width:150,
-                    height:50
+                  width:170,
+                  height:50,
+                  margin:5
                 }}
-            />
-           <View>
-               <TextInput
-                value={value}
-                placeholder='Please enter full name'
-                onChange={()=>this.setName()}
-               />
-               <TouchableOpacity 
-                    onPress={()=>console.log('sve')}
-                    style={{width:Devices.width*0.25,height:50}}
-                >
-                    <Text>
-                        Save
-                    </Text>
-                </TouchableOpacity>
+                />
+            </View>
+            <View>
+                <View row justifySpaceBetween style={{height:50 , backgroundColor: '#ff5511'}}>  
+                  <TextInput
+                    value={value}
+                    placeholder='Please enter full name'
+                    onChangeText={e=>this.setName(e)}
+                    style={{
+                      height:50,
+                      width:wp(75)
+                    }}
+                  />
+                  <View 
+                    justifySpaceBetween 
+                    centerItems
+                    alignCenter
+                    style={{
+                      width:wp(25)
+                    }}
+                    >
+                      <Button 
+                        title='Save'
+                      />
+                  </View>
+                </View>
+                <View>
+                  <Text>Age</Text>
+                  <Slider/>
+                </View>
                 <ScrollView>
                     <FlatList
                         data={listuser}
@@ -85,37 +108,78 @@ componentWillReceiveProps(nextProps){
                         keyExtractor={(item, index) => `${index}`}
                         renderItem={this.renderList}
                         refreshControl={
-                            <RefreshControl
+                          <RefreshControl
                                 refreshing={refreshing}
-                                onRefresh={this.onRefresh}
-                    
-                            />
-                        }
-                    />
+                                onRefresh={()=>this.onRefresh()}
+                                />
+                              }
+                              />
                 </ScrollView>
-           </View>
-          
-       </View>
+            </View>
+      </Container>
     );
-}
+} 
 
 // #region function
 
-//list dish
+onRefresh = async () =>{
+  this.setState({refreshing:!this.state.refreshing})
+  this.props.getApiListUserStart()
+}
+
+//show button delete
+showButtonDel = i => {
+  this.setState({
+    isVisible : true ,
+    ind : i
+    })
+}
+//Hidden button delete
+hiddenButtonDel = i => {
+  console.log("hiden")
+  const { ind , isVisible } = this.state
+  console.log(ind)
+  console.log(i)
+  console.log(isVisible)
+    ind !== i && isVisible ?
+    this.setState({
+        isVisible : false ,
+        ind : ''
+    })
+    : null
+}
+setName = e =>{
+    this.setState({
+        value:e
+    })
+}
+//list Users
 renderList=({item,index})=>{
     console.log(item)
+    const { isVisible , ind } = this.state
     return(
-        <TouchableOpacity onLongPress={()=>console.log('delete')} style={styles.containerDish}>
-
+        <TouchableOpacity 
+            onLongPress={()=>this.showButtonDel(index)} 
+            onPress={()=>this.hiddenButtonDel(index)} 
+            style={styles.itemList}
+            >
+          <View row justifySpaceBetween style={{height:40}}>
             <View>
                 <Text>{item.fullName}</Text>
                 <Text>{item.age}</Text>
             </View>
-            <View>
-                <TouchableOpacity>
-                    <Text>Delete</Text>
-                </TouchableOpacity>
+            <View style={{
+                    paddingHorizontal:8,
+                    paddingVertical:5,
+                    }}>
+                {
+                    isVisible && ind === index ?
+                        <Button title='Delete' onPress={()=>console.log("delete")}/> :
+                        null
+
+                }
             </View>
+          </View>
         </TouchableOpacity>
     )
 }
@@ -127,7 +191,7 @@ renderList=({item,index})=>{
 function mapStateToProps(state) {
     console.log(state)
     return {
-        listuser:state.ListUser.response
+        listuser:state.reducerListUser.response
     }
   }
   

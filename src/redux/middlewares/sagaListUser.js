@@ -22,6 +22,7 @@ import {METHOD_GET,HEADER} from '../../constants/webServices'
   })
   .then( response => response.json() )
   .catch( error => error )
+  console.log(request)
   return request  
 }
   
